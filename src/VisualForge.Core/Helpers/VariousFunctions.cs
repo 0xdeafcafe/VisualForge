@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text;
@@ -121,6 +122,15 @@ namespace VisualForge.Core.Helpers
 
 				return b;
 			}
+		}
+
+		public static float DegreesToRadians(float degrees)
+		{
+			return (float) ((degrees*Math.PI)/180);
+		}
+		public static float RadiansToDegrees(float radians)
+		{
+			return (float) ((radians*180)/Math.PI);
 		}
 	}
 }

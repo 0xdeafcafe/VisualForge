@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.Windows;
 using VisualForge.Usermaps.Games;
 using HelixToolkit.Wpf;
+using VisualForge.Core.Helpers;
 
 namespace VisualForge
 {
@@ -29,6 +30,7 @@ namespace VisualForge
 			if ((bool)ofd.ShowDialog())
 			{
 				var h3 = new Halo3(ofd.FileName);
+				lblSandboxPath.Text = ofd.FileName;
 
 				var container = new Model3DCollection();
 				foreach (var placedObject in h3.SandboxObjects.Where(placedObject => placedObject.TagIndex != -1))
@@ -39,30 +41,56 @@ namespace VisualForge
 					{
 						gameAssetPath = Core.Helpers.VariousFunctions.GetGameAsset(Halo3.GameId, placedObject.TagEntry.Tag.TagPath);
 					}
-					catch (FileNotFoundException ex)
+					catch (FileNotFoundException)
 					{
 						ActionLog.AddEntry("Missing Game Asset");
 						continue;
 					}
 
 					var model = ModelImporter.Load(gameAssetPath);
-					model.Transform = new TranslateTransform3D(
-						placedObject.SpawnCoordinates.X,
-						placedObject.SpawnCoordinates.Y,
-						placedObject.SpawnCoordinates.Z);
-
+					model.Transform = CreateTransformGroup(placedObject.SpawnCoordinates);
 					container.Add(model);
 				}
 
-				foreach(var model in container)
-					ModelViewport.Children.Add(new ModelVisual3D()
+				ModelViewport.Children.Clear();
+				foreach (var model in container)
+				{
+					ModelViewport.Children.Add(new ModelVisual3D
 						                           {
 							                           Content = model
 						                           });
+				}
 
 				ModelViewport.ShowCameraInfo = true;
 				ModelViewport.ZoomExtents();
 			}
+		}
+
+		public Transform3DGroup CreateTransformGroup(Halo3.ObjectChunk.Coordinates objectCoordinates)
+		{
+			var transformGroup = new Transform3DGroup();
+
+			// X, Y, Z Coordinates
+			transformGroup.Children.Add(new TranslateTransform3D(
+											objectCoordinates.X,
+											objectCoordinates.Y,
+											objectCoordinates.Z
+										));
+
+			// Roll
+			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
+											new Vector3D(1, 0, 0), 90)));
+
+			// Pitch
+			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
+											new Vector3D(0, 1, 0), objectCoordinates.Pitch)));
+
+			// Yaw
+			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
+											new Vector3D(0, 0, 1), objectCoordinates.Yaw)));
+
+
+			return transformGroup;
 		}
 
 		public class Log
@@ -70,6 +98,7 @@ namespace VisualForge
 			public Log(TextBox textbox)
 			{
 				_textbox = textbox;
+				ClearLog();
 				AddEntry("Welcome to Visual Forge!");
 			}
 			private readonly TextBox _textbox;
@@ -78,7 +107,11 @@ namespace VisualForge
 			{
 				var timestamp = string.Format("[{0}]", DateTime.Now.ToString("HH:mm:ss.ffff"));
 
-				_textbox.Text += string.Format("{0} - {1}\r\n", timestamp, content);
+				_textbox.Text += string.Format("{0} - {1}" + Environment.NewLine, timestamp, content);
+			}
+			public void ClearLog()
+			{
+				_textbox.Text = "";
 			}
 		}
 	}

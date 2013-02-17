@@ -16,7 +16,11 @@
 			</Grid.ColumnDefinitions>
 
 			<Grid Grid.Column="0">
-				<Button x:Name="btnOpenSandbox" Content="Open" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenSandbox_Click"/>
+				<StackPanel>
+					<Button x:Name="btnOpenSandbox" Content="Open Sandbox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Click="btnOpenSandbox_Click"/>
+					<TextBlock Text="Sandbox File Path:" Margin="10,10,10,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
+					<TextBlock x:Name="lblSandboxPath" Text="..." Margin="10,0,10,10" VerticalAlignment="Top" HorizontalAlignment="Stretch" TextWrapping="Wrap" />
+				</StackPanel>
 			</Grid>
 			<GridSplitter Width="2" Foreground="Black" Background="Black" ResizeDirection="Auto" />
 			<Grid Grid.Column="1">

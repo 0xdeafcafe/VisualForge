@@ -35,6 +35,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -120,7 +121,13 @@
     <Content Include="Content\4D5307E6\Taglists\740.vftl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\4D5307E6\Assets\objects\vehicles\mongoose\mongoose.obj">
+    <Content Include="Content\4D5307E6\Assets\objects\vehicles\mongoose\mongoose_1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\4D5307E6\Assets\objects\levels\dlc\sandbox\sand_gatehouse\sand_gatehouse.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\4D5307E6\Assets\objects\levels\dlc\sandbox\sand_pyr_corner\sand_pyr_corner.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
