@@ -20,14 +20,17 @@
 			</Grid>
 			<GridSplitter Width="2" Foreground="Black" Background="Black" ResizeDirection="Auto" />
 			<Grid Grid.Column="1">
-				<h:HelixViewport3D x:Name="view1" ZoomExtentsWhenLoaded="True" Background="#FF6495ed">
-					<h:DefaultLights/>
+				<h:HelixViewport3D x:Name="ModelViewport" ZoomExtentsWhenLoaded="True" Background="#FF6495ed">
+					<ModelVisual3D x:Name="root1">
+						<h:DefaultLights/>
+						<ModelVisual3D x:Name="ModelViewer"/>
+					</ModelVisual3D>
 				</h:HelixViewport3D>
 			</Grid>
 		</Grid>
 		<GridSplitter Height="2" Foreground="Black" Background="Black" ResizeDirection="Auto" />
 		<Grid Grid.Row="1">
-			<TextBox Margin="5" Text="[00:00:00] - Notification Example" Background="#FFE4E4E4" BorderBrush="{x:Null}" IsReadOnly="True"/>
+			<TextBox x:Name="txtLog" Margin="5" Text="[00:00:00] - Notification Example" Background="#FFE4E4E4" BorderBrush="{x:Null}" IsReadOnly="True"/>
 		</Grid>
 	</Grid>
 </Window>

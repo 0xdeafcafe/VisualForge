@@ -36,7 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HelixToolkit.Wpf">
+    <Reference Include="HelixToolkit.Wpf, Version=2013.1.8.1, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\HelixToolkit.2013.1.8.1\lib\NET40\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />

@@ -15,6 +15,14 @@ namespace VisualForge.Core.Helpers
 
 			return File.ReadAllBytes(taglistPath);
 		}
+		public static string GetGameAsset(string gameId, string tagFileName)
+		{
+			var assetPath = GetApplicationLocation() + string.Format(@"\Content\{0}\Assets\{1}.obj", gameId, tagFileName);
+			if (!File.Exists(assetPath))
+				throw new FileNotFoundException("Game Asset for the specified tag is missing");
+
+			return assetPath;
+		}
 
 		/// <summary>
 		/// Gets the parent directory of the application's exe
