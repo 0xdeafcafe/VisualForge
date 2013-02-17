@@ -58,6 +58,7 @@ namespace VisualForge.Usermaps.Games
 			LoadMapMetaData();
 			LoadObjectChunks();
 			LoadTagEntries();
+			BindTagEntryData();
 		}
 		private bool ValidateUsermap()
 		{
@@ -145,6 +146,18 @@ namespace VisualForge.Usermaps.Games
 				_sandboxTagEntries.Add(tagEntry);
 			}
 		}
+		private void BindTagEntryData()
+		{
+			foreach(var tagEntry in _sandboxTagEntries)
+				if (tagEntry.CountOnMap > 0)
+					foreach(var placedObject in _sandboxObjects.Where(placedObject => placedObject.TagIndex == tagEntry.Tag.TagIndex))
+						tagEntry.PlacedObjects.Add(placedObject);
+
+			for (var i = 0; i < 0x100; i++)
+				for (var j = 0; j < 640; j++)
+					if (_sandboxObjects[j].TagIndex == i)
+						_sandboxObjects[j].TagEntry = _sandboxTagEntries[i];
+		}
 
 		// Classes
 		public class Header
@@ -211,7 +224,7 @@ namespace VisualForge.Usermaps.Games
 			public Coordinates SpawnCoordinates { get; set; }
 			public byte Team { get; set; }
 			public byte RespawnTime { get; set; }
-			public MapMetaData.Tag Tag { get; set; }
+			public TagEntry TagEntry { get; set; }
 
 			public void Load(EndianStream stream)
 			{
