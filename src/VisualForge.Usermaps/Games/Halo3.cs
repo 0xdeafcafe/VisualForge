@@ -36,19 +36,19 @@ namespace VisualForge.Usermaps.Games
 		public Halo3(byte[] file) { Initalize(new MemoryStream(file)); }
 		public Halo3(Stream fileStream) { Initalize(fileStream); }
 
-		private EndianStream _sandboxStream;
+		// Public Facing Variabes
+		public EndianStream SandboxStream;
+		public const string GameId = "4D5307E6";
+		public Header SandboxeHeader;
+		public MapMetaData SandboxMapMetaData;
+		public IList<ObjectChunk> SandboxObjects;
+		public IList<TagEntry> SandboxTagEntries; 
 
-		private Header _sandboxeHeader;
-		private MapMetaData _sandboxMapMetaData;
-		private IList<ObjectChunk> _sandboxObjects;
-		private IList<TagEntry> _sandboxTagEntries; 
-
-		private const string _gameId = "4D5307E6";
 
 		private void Initalize(Stream fileStream)
 		{
-			_sandboxStream = new EndianStream(fileStream, Endian.BigEndian);
-			if (!ValidateUsermap())
+			SandboxStream = new EndianStream(fileStream, Endian.BigEndian);
+			if (!ValidateMapVarient())
 			{
 				Close();
 				throw new InvalidOperationException("Invalid Halo 3 Usermap!");
@@ -60,103 +60,103 @@ namespace VisualForge.Usermaps.Games
 			LoadTagEntries();
 			BindTagEntryData();
 		}
-		private bool ValidateUsermap()
+		private bool ValidateMapVarient()
 		{
-			_sandboxStream.SeekTo(0x138);
-			return (_sandboxStream.ReadAscii(0x04) == "mapv");
+			SandboxStream.SeekTo(0x138);
+			return (SandboxStream.ReadAscii(0x04) == "mapv");
 		}
 		public void Close()
 		{
-			_sandboxStream.Close();
+			SandboxStream.Close();
 		}
 
-
+		// Loading
 		private void LoadHeader()
 		{
-			_sandboxeHeader = new Header();
+			SandboxeHeader = new Header();
 
-			_sandboxStream.SeekTo(0x42);
-			_sandboxeHeader.CreationDate =					_sandboxStream.ReadInt32();
-			_sandboxStream.SeekTo(0x48);
-			_sandboxeHeader.CreationVarientName =			_sandboxStream.ReadUTF16(0x1F);
-			_sandboxStream.SeekTo(0x68);
-			_sandboxeHeader.CreationVarientDescription =	_sandboxStream.ReadAscii(0x80);
-			_sandboxStream.SeekTo(0xE8);
-			_sandboxeHeader.CreationVarientAuthor =		_sandboxStream.ReadAscii(0x13);
+			SandboxStream.SeekTo(0x42);
+			SandboxeHeader.CreationDate =					SandboxStream.ReadInt32();
+			SandboxStream.SeekTo(0x48);
+			SandboxeHeader.CreationVarientName =			SandboxStream.ReadUTF16(0x1F);
+			SandboxStream.SeekTo(0x68);
+			SandboxeHeader.CreationVarientDescription =	SandboxStream.ReadAscii(0x80);
+			SandboxStream.SeekTo(0xE8);
+			SandboxeHeader.CreationVarientAuthor =		SandboxStream.ReadAscii(0x13);
 
-			_sandboxStream.SeekTo(0x114);
-			_sandboxeHeader.ModificationDate =				_sandboxStream.ReadInt32();
-			_sandboxStream.SeekTo(0x150);
-			_sandboxeHeader.VarientName =					_sandboxStream.ReadUTF16(0x1F);
-			_sandboxStream.SeekTo(0x170);
-			_sandboxeHeader.VarientDescription =			_sandboxStream.ReadAscii(0x80);
-			_sandboxStream.SeekTo(0x1F0);
-			_sandboxeHeader.VarientAuthor =				_sandboxStream.ReadAscii(0x13);
+			SandboxStream.SeekTo(0x114);
+			SandboxeHeader.ModificationDate =				SandboxStream.ReadInt32();
+			SandboxStream.SeekTo(0x150);
+			SandboxeHeader.VarientName =					SandboxStream.ReadUTF16(0x1F);
+			SandboxStream.SeekTo(0x170);
+			SandboxeHeader.VarientDescription =			SandboxStream.ReadAscii(0x80);
+			SandboxStream.SeekTo(0x1F0);
+			SandboxeHeader.VarientAuthor =				SandboxStream.ReadAscii(0x13);
 
-			_sandboxStream.SeekTo(0x228);
-			_sandboxeHeader.MapID =						_sandboxStream.ReadInt32();
+			SandboxStream.SeekTo(0x228);
+			SandboxeHeader.MapID =						SandboxStream.ReadInt32();
 
-			_sandboxStream.SeekTo(0x246);
-			_sandboxeHeader.SpawnedObjectCount =			_sandboxStream.ReadInt16();
+			SandboxStream.SeekTo(0x246);
+			SandboxeHeader.SpawnedObjectCount =			SandboxStream.ReadInt16();
 
-			_sandboxStream.SeekTo(0x24C);
-			_sandboxeHeader.WorldBoundsX =					new Header.WorldBound
+			SandboxStream.SeekTo(0x24C);
+			SandboxeHeader.WorldBoundsX =					new Header.WorldBound
 															{
-																Min = _sandboxStream.ReadFloat(),
-																Max = _sandboxStream.ReadFloat()
+																Min = SandboxStream.ReadFloat(),
+																Max = SandboxStream.ReadFloat()
 															};
-			_sandboxeHeader.WorldBoundsY =					new Header.WorldBound
+			SandboxeHeader.WorldBoundsY =					new Header.WorldBound
 															{
-																Min = _sandboxStream.ReadFloat(),
-																Max = _sandboxStream.ReadFloat()
+																Min = SandboxStream.ReadFloat(),
+																Max = SandboxStream.ReadFloat()
 															};
-			_sandboxeHeader.WorldBoundsZ =					new Header.WorldBound
+			SandboxeHeader.WorldBoundsZ =					new Header.WorldBound
 															{
-																Min = _sandboxStream.ReadFloat(),
-																Max = _sandboxStream.ReadFloat()
+																Min = SandboxStream.ReadFloat(),
+																Max = SandboxStream.ReadFloat()
 															};
 
-			_sandboxStream.SeekTo(0x268);
-			_sandboxeHeader.MaximiumBudget =				_sandboxStream.ReadFloat();
-			_sandboxeHeader.CurrentBudget =				_sandboxStream.ReadFloat();
+			SandboxStream.SeekTo(0x268);
+			SandboxeHeader.MaximiumBudget =				SandboxStream.ReadFloat();
+			SandboxeHeader.CurrentBudget =				SandboxStream.ReadFloat();
 		}
 		private void LoadMapMetaData()
 		{
 			var taglist = 
-				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(_gameId, _sandboxeHeader.MapID));
+				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(GameId, SandboxeHeader.MapID));
 
-			_sandboxMapMetaData = JsonConvert.DeserializeObject<MapMetaData>(VariousFunctions.ByteArrayToString(taglist, VariousFunctions.EncodingType.ASCII));
+			SandboxMapMetaData = JsonConvert.DeserializeObject<MapMetaData>(VariousFunctions.ByteArrayToString(taglist, VariousFunctions.EncodingType.ASCII));
 		}
 		private void LoadObjectChunks()
 		{
-			_sandboxStream.SeekTo(0x279);
-			_sandboxObjects = new List<ObjectChunk>();
+			SandboxStream.SeekTo(0x279);
+			SandboxObjects = new List<ObjectChunk>();
 			for(var chunk = 0; chunk < 640; chunk++)
-				_sandboxObjects.Add(new ObjectChunk(_sandboxStream));
+				SandboxObjects.Add(new ObjectChunk(SandboxStream));
 		}
 		private void LoadTagEntries()
 		{
-			_sandboxTagEntries = new List<TagEntry>();
-			_sandboxStream.SeekTo(0xD494);
+			SandboxTagEntries = new List<TagEntry>();
+			SandboxStream.SeekTo(0xD494);
 			for(var entry = 0; entry < 0x100; entry++)
 			{
-				var tagEntry = new TagEntry(_sandboxStream, _sandboxMapMetaData);
+				var tagEntry = new TagEntry(SandboxStream, SandboxMapMetaData);
 				if (tagEntry.Tag != null)
 					tagEntry.Tag.TagIndex = entry;
-				_sandboxTagEntries.Add(tagEntry);
+				SandboxTagEntries.Add(tagEntry);
 			}
 		}
 		private void BindTagEntryData()
 		{
-			foreach(var tagEntry in _sandboxTagEntries)
+			foreach(var tagEntry in SandboxTagEntries)
 				if (tagEntry.CountOnMap > 0)
-					foreach(var placedObject in _sandboxObjects.Where(placedObject => placedObject.TagIndex == tagEntry.Tag.TagIndex))
+					foreach(var placedObject in SandboxObjects.Where(placedObject => placedObject.TagIndex == tagEntry.Tag.TagIndex))
 						tagEntry.PlacedObjects.Add(placedObject);
 
 			for (var i = 0; i < 0x100; i++)
 				for (var j = 0; j < 640; j++)
-					if (_sandboxObjects[j].TagIndex == i)
-						_sandboxObjects[j].TagEntry = _sandboxTagEntries[i];
+					if (SandboxObjects[j].TagIndex == i)
+						SandboxObjects[j].TagEntry = SandboxTagEntries[i];
 		}
 
 		// Classes
