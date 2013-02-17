@@ -129,7 +129,7 @@ namespace VisualForge.Usermaps.Games
 		}
 		private void LoadObjectChunks()
 		{
-			SandboxStream.SeekTo(0x279);
+			SandboxStream.SeekTo(0x278);
 			SandboxObjects = new List<ObjectChunk>();
 			for(var chunk = 0; chunk < 640; chunk++)
 				SandboxObjects.Add(new ObjectChunk(SandboxStream));
@@ -148,15 +148,18 @@ namespace VisualForge.Usermaps.Games
 		}
 		private void BindTagEntryData()
 		{
-			foreach(var tagEntry in SandboxTagEntries)
-				if (tagEntry.CountOnMap > 0)
-					foreach(var placedObject in SandboxObjects.Where(placedObject => placedObject.TagIndex == tagEntry.Tag.TagIndex))
-						tagEntry.PlacedObjects.Add(placedObject);
-
 			for (var i = 0; i < 0x100; i++)
 				for (var j = 0; j < 640; j++)
 					if (SandboxObjects[j].TagIndex == i)
 						SandboxObjects[j].TagEntry = SandboxTagEntries[i];
+
+			foreach(var tagEntry in SandboxTagEntries)
+				if (tagEntry.CountOnMap > 0)
+					foreach (var placedObject in SandboxObjects)
+					{
+						if (placedObject.TagIndex == tagEntry.Tag.TagIndex) 
+							tagEntry.PlacedObjects.Add(placedObject);
+					}
 		}
 
 		// Classes
@@ -215,7 +218,6 @@ namespace VisualForge.Usermaps.Games
 		{
 			public ObjectChunk(EndianStream stream)
 			{
-				Offset = stream.Position;
 				Load(stream);
 			}
 
@@ -228,7 +230,8 @@ namespace VisualForge.Usermaps.Games
 
 			public void Load(EndianStream stream)
 			{
-				stream.SeekTo(Offset + 0x0C);
+				Offset = stream.Position;
+				stream.SeekTo(stream.Position + 0x0C);
 				TagIndex = stream.ReadInt32();
 				SpawnCoordinates = new Coordinates
 					                   {
@@ -280,8 +283,9 @@ namespace VisualForge.Usermaps.Games
 		{
 			public TagEntry(EndianStream stream, MapMetaData mapMetaData)
 			{
-				Offset = stream.Position;
 				Load(stream, mapMetaData);
+
+				PlacedObjects = new List<ObjectChunk>();
 			}
 
 			public List<ObjectChunk> PlacedObjects { get; set; }
@@ -296,7 +300,7 @@ namespace VisualForge.Usermaps.Games
 
 			public void Load(EndianStream stream, MapMetaData mapMetaData)
 			{
-				stream.SeekTo(Offset);
+				Offset = stream.Position;
 				Ident = stream.ReadInt32();
 				Tag = mapMetaData.GetTag(Ident);
 				RunTimeMinimium = stream.ReadByte();
