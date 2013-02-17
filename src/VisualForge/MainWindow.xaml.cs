@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Win32;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using VisualForge.Usermaps.Games;
 
 namespace VisualForge
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void btnOpenSandbox_Click(object sender, RoutedEventArgs e)
+		{
+			var ofd = new OpenFileDialog();
+			if ((bool)ofd.ShowDialog())
+			{
+				var h3 = new Halo3(ofd.FileName);
+			}
 		}
 	}
 }

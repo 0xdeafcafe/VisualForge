@@ -61,6 +61,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\VariousFunctions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -90,6 +91,21 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisualForge.Core\VisualForge.Core.csproj">
+      <Project>{277d2ff9-3427-416b-9754-7b3e9a68b4ff}</Project>
+      <Name>VisualForge.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisualForge.IO\VisualForge.IO.csproj">
+      <Project>{54f3e2a7-7d40-483d-a297-3038b89a9afc}</Project>
+      <Name>VisualForge.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisualForge.Usermaps\VisualForge.Usermaps.csproj">
+      <Project>{49821846-a75a-4491-b5f3-38c105a433ba}</Project>
+      <Name>VisualForge.Usermaps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
