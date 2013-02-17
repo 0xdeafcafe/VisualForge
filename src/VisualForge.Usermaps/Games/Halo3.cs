@@ -36,17 +36,18 @@ namespace VisualForge.Usermaps.Games
 		public Halo3(byte[] file) { Initalize(new MemoryStream(file)); }
 		public Halo3(Stream fileStream) { Initalize(fileStream); }
 
-		private EndianStream _forgeStream;
+		private EndianStream _sandboxStream;
 
-		private Header _forgeHeader;
-		private MapMetaData _forgeMapMetaData;
-		private IList<ObjectChunk> _forgeObjects; 
+		private Header _sandboxeHeader;
+		private MapMetaData _sandboxMapMetaData;
+		private IList<ObjectChunk> _sandboxObjects;
+		private IList<TagEntry> _sandboxTagEntries; 
 
 		private const string _gameId = "4D5307E6";
 
 		private void Initalize(Stream fileStream)
 		{
-			_forgeStream = new EndianStream(fileStream, Endian.BigEndian);
+			_sandboxStream = new EndianStream(fileStream, Endian.BigEndian);
 			if (!ValidateUsermap())
 			{
 				Close();
@@ -56,84 +57,93 @@ namespace VisualForge.Usermaps.Games
 			LoadHeader();
 			LoadMapMetaData();
 			LoadObjectChunks();
+			LoadTagEntries();
 		}
 		private bool ValidateUsermap()
 		{
-			_forgeStream.SeekTo(0x138);
-			return (_forgeStream.ReadAscii(0x04) == "mapv");
+			_sandboxStream.SeekTo(0x138);
+			return (_sandboxStream.ReadAscii(0x04) == "mapv");
 		}
 		public void Close()
 		{
-			_forgeStream.Close();
+			_sandboxStream.Close();
 		}
 
 
 		private void LoadHeader()
 		{
-			_forgeHeader = new Header();
+			_sandboxeHeader = new Header();
 
-			_forgeStream.SeekTo(0x42);
-			_forgeHeader.CreationDate =					_forgeStream.ReadInt32();
-			_forgeStream.SeekTo(0x48);
-			_forgeHeader.CreationVarientName =			_forgeStream.ReadUTF16(0x1F);
-			_forgeStream.SeekTo(0x68);
-			_forgeHeader.CreationVarientDescription =	_forgeStream.ReadAscii(0x80);
-			_forgeStream.SeekTo(0xE8);
-			_forgeHeader.CreationVarientAuthor =		_forgeStream.ReadAscii(0x13);
+			_sandboxStream.SeekTo(0x42);
+			_sandboxeHeader.CreationDate =					_sandboxStream.ReadInt32();
+			_sandboxStream.SeekTo(0x48);
+			_sandboxeHeader.CreationVarientName =			_sandboxStream.ReadUTF16(0x1F);
+			_sandboxStream.SeekTo(0x68);
+			_sandboxeHeader.CreationVarientDescription =	_sandboxStream.ReadAscii(0x80);
+			_sandboxStream.SeekTo(0xE8);
+			_sandboxeHeader.CreationVarientAuthor =		_sandboxStream.ReadAscii(0x13);
 
-			_forgeStream.SeekTo(0x114);
-			_forgeHeader.ModificationDate =				_forgeStream.ReadInt32();
-			_forgeStream.SeekTo(0x150);
-			_forgeHeader.VarientName =					_forgeStream.ReadUTF16(0x1F);
-			_forgeStream.SeekTo(0x170);
-			_forgeHeader.VarientDescription =			_forgeStream.ReadAscii(0x80);
-			_forgeStream.SeekTo(0x1F0);
-			_forgeHeader.VarientAuthor =				_forgeStream.ReadAscii(0x13);
+			_sandboxStream.SeekTo(0x114);
+			_sandboxeHeader.ModificationDate =				_sandboxStream.ReadInt32();
+			_sandboxStream.SeekTo(0x150);
+			_sandboxeHeader.VarientName =					_sandboxStream.ReadUTF16(0x1F);
+			_sandboxStream.SeekTo(0x170);
+			_sandboxeHeader.VarientDescription =			_sandboxStream.ReadAscii(0x80);
+			_sandboxStream.SeekTo(0x1F0);
+			_sandboxeHeader.VarientAuthor =				_sandboxStream.ReadAscii(0x13);
 
-			_forgeStream.SeekTo(0x228);
-			_forgeHeader.MapID =						_forgeStream.ReadInt32();
+			_sandboxStream.SeekTo(0x228);
+			_sandboxeHeader.MapID =						_sandboxStream.ReadInt32();
 
-			_forgeStream.SeekTo(0x246);
-			_forgeHeader.SpawnedObjectCount =			_forgeStream.ReadInt16();
+			_sandboxStream.SeekTo(0x246);
+			_sandboxeHeader.SpawnedObjectCount =			_sandboxStream.ReadInt16();
 
-			_forgeStream.SeekTo(0x24C);
-			_forgeHeader.WorldBoundsX =					new Header.WorldBound
+			_sandboxStream.SeekTo(0x24C);
+			_sandboxeHeader.WorldBoundsX =					new Header.WorldBound
 															{
-																Min = _forgeStream.ReadFloat(),
-																Max = _forgeStream.ReadFloat()
+																Min = _sandboxStream.ReadFloat(),
+																Max = _sandboxStream.ReadFloat()
 															};
-			_forgeHeader.WorldBoundsY =					new Header.WorldBound
+			_sandboxeHeader.WorldBoundsY =					new Header.WorldBound
 															{
-																Min = _forgeStream.ReadFloat(),
-																Max = _forgeStream.ReadFloat()
+																Min = _sandboxStream.ReadFloat(),
+																Max = _sandboxStream.ReadFloat()
 															};
-			_forgeHeader.WorldBoundsZ =					new Header.WorldBound
+			_sandboxeHeader.WorldBoundsZ =					new Header.WorldBound
 															{
-																Min = _forgeStream.ReadFloat(),
-																Max = _forgeStream.ReadFloat()
+																Min = _sandboxStream.ReadFloat(),
+																Max = _sandboxStream.ReadFloat()
 															};
 
-			_forgeStream.SeekTo(0x268);
-			_forgeHeader.MaximiumBudget =				_forgeStream.ReadFloat();
-			_forgeHeader.CurrentBudget =				_forgeStream.ReadFloat();
+			_sandboxStream.SeekTo(0x268);
+			_sandboxeHeader.MaximiumBudget =				_sandboxStream.ReadFloat();
+			_sandboxeHeader.CurrentBudget =				_sandboxStream.ReadFloat();
 		}
 		private void LoadMapMetaData()
 		{
 			var taglist = 
-				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(_gameId, _forgeHeader.MapID));
+				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(_gameId, _sandboxeHeader.MapID));
 
-			_forgeMapMetaData = JsonConvert.DeserializeObject<MapMetaData>(VariousFunctions.ByteArrayToString(taglist, VariousFunctions.EncodingType.ASCII));
+			_sandboxMapMetaData = JsonConvert.DeserializeObject<MapMetaData>(VariousFunctions.ByteArrayToString(taglist, VariousFunctions.EncodingType.ASCII));
 		}
 		private void LoadObjectChunks()
 		{
-			_forgeStream.SeekTo(0x279);
-			_forgeObjects = new List<ObjectChunk>();
+			_sandboxStream.SeekTo(0x279);
+			_sandboxObjects = new List<ObjectChunk>();
 			for(var chunk = 0; chunk < 640; chunk++)
-				_forgeObjects.Add(new ObjectChunk(_forgeStream));
+				_sandboxObjects.Add(new ObjectChunk(_sandboxStream));
 		}
-		private void LoadTags()
+		private void LoadTagEntries()
 		{
-			
+			_sandboxTagEntries = new List<TagEntry>();
+			_sandboxStream.SeekTo(0xD494);
+			for(var entry = 0; entry < 0x100; entry++)
+			{
+				var tagEntry = new TagEntry(_sandboxStream, _sandboxMapMetaData);
+				if (tagEntry.Tag != null)
+					tagEntry.Tag.TagIndex = entry;
+				_sandboxTagEntries.Add(tagEntry);
+			}
 		}
 
 		// Classes
@@ -171,6 +181,10 @@ namespace VisualForge.Usermaps.Games
 			public Int32 MapID { get; set; }
 			public List<Tag> Tags { get; set; }
 
+			/// <summary>
+			/// Gets a tag based on it's Datum Index.
+			/// </summary>
+			/// <param name="datumIndex">The datum index of the tag you're searching for.</param>
 			public Tag GetTag(Int32 datumIndex)
 			{
 				return Tags.FirstOrDefault(Tag => Tag.DatumIndex == datumIndex);
@@ -247,6 +261,46 @@ namespace VisualForge.Usermaps.Games
 				public float Roll { get; set; }
 				public float Pitch { get; set; }
 				public float Yaw { get; set; }
+			}
+		}
+		public class TagEntry
+		{
+			public TagEntry(EndianStream stream, MapMetaData mapMetaData)
+			{
+				Offset = stream.Position;
+				Load(stream, mapMetaData);
+			}
+
+			public List<ObjectChunk> PlacedObjects { get; set; }
+			public long Offset { get; set; }
+			public Int32 Ident { get; set; }
+			public MapMetaData.Tag Tag { get; set; }
+			public byte RunTimeMinimium { get; set; }
+			public byte RunTimeMaximium { get; set; }
+			public byte CountOnMap { get; set; }
+			public byte DesignTimeMaximium { get; set; }
+			public float Cost { get; set; }
+
+			public void Load(EndianStream stream, MapMetaData mapMetaData)
+			{
+				stream.SeekTo(Offset);
+				Ident = stream.ReadInt32();
+				Tag = mapMetaData.GetTag(Ident);
+				RunTimeMinimium = stream.ReadByte();
+				RunTimeMaximium = stream.ReadByte();
+				CountOnMap = stream.ReadByte();
+				DesignTimeMaximium = stream.ReadByte();
+				Cost = stream.ReadFloat();
+			}
+			public void Update(EndianStream stream)
+			{
+				stream.SeekTo(Offset);
+				stream.WriteInt32(Ident);
+				stream.WriteByte(RunTimeMinimium);
+				stream.WriteByte(RunTimeMaximium);
+				stream.WriteByte(CountOnMap);
+				stream.WriteByte(DesignTimeMaximium);
+				stream.WriteFloat(Cost);
 			}
 		}
 	}
