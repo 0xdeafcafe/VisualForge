@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{49821846-A75A-4491-B5F3-38C105A433BA}</ProjectGuid>
+    <ProjectGuid>{54F3E2A7-7D40-483D-A297-3038B89A9AFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VisualForge.Usermaps</RootNamespace>
-    <AssemblyName>VisualForge.Usermaps</AssemblyName>
+    <RootNamespace>VisualForge.IO</RootNamespace>
+    <AssemblyName>VisualForge.IO</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -39,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Games\Halo3.cs" />
-    <Compile Include="IUsermap.cs" />
+    <Compile Include="Endian.cs" />
+    <Compile Include="EndianReader.cs" />
+    <Compile Include="EndianStream.cs" />
+    <Compile Include="EndianWriter.cs" />
+    <Compile Include="FileTable.cs" />
+    <Compile Include="IReader.cs" />
+    <Compile Include="IWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
