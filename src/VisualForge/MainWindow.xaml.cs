@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System.Linq;
+using Microsoft.Win32;
 using System.Windows;
 using VisualForge.Usermaps.Games;
 
@@ -20,6 +21,11 @@ namespace VisualForge
 			if ((bool)ofd.ShowDialog())
 			{
 				var h3 = new Halo3(ofd.FileName);
+
+				foreach (var tag in h3.SandboxTagEntries.Where(tag => tag.PlacedObjects != null && tag.PlacedObjects.Count > 0))
+				{
+
+				}
 			}
 		}
 	}

@@ -1,9 +1,33 @@
 ﻿<Window x:Class="VisualForge.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-		<Button x:Name="btnOpenSandbox" Content="Open" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenSandbox_Click"/>
+		xmlns:h="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        Title="MainWindow" Height="497" Width="859">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="100" />
+		</Grid.RowDefinitions>
 
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="150" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0">
+				<Button x:Name="btnOpenSandbox" Content="Open" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btnOpenSandbox_Click"/>
+			</Grid>
+			<GridSplitter Width="2" Foreground="Black" Background="Black" ResizeDirection="Auto" />
+			<Grid Grid.Column="1">
+				<h:HelixViewport3D x:Name="view1" ZoomExtentsWhenLoaded="True" Background="#FF6495ed">
+					<h:DefaultLights/>
+				</h:HelixViewport3D>
+			</Grid>
+		</Grid>
+		<GridSplitter Height="2" Foreground="Black" Background="Black" ResizeDirection="Auto" />
+		<Grid Grid.Row="1">
+			<TextBox Margin="5" Text="[00:00:00] - Notification Example" Background="#FFE4E4E4" BorderBrush="{x:Null}" IsReadOnly="True"/>
+		</Grid>
 	</Grid>
 </Window>

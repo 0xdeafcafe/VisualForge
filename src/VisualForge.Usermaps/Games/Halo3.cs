@@ -155,10 +155,9 @@ namespace VisualForge.Usermaps.Games
 
 			foreach(var tagEntry in SandboxTagEntries)
 				if (tagEntry.CountOnMap > 0)
-					foreach (var placedObject in SandboxObjects)
+					foreach (var placedObject in SandboxObjects.Where(placedObject => placedObject.TagIndex == tagEntry.Tag.TagIndex))
 					{
-						if (placedObject.TagIndex == tagEntry.Tag.TagIndex) 
-							tagEntry.PlacedObjects.Add(placedObject);
+						tagEntry.PlacedObjects.Add(placedObject);
 					}
 		}
 
