@@ -130,6 +130,9 @@
     <Content Include="Content\4D5307E6\Assets\objects\levels\dlc\sandbox\sand_pyr_corner\sand_pyr_corner.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\4D5307E6\Assets\objects\multi\spawning\respawn_point.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

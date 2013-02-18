@@ -22,7 +22,7 @@ namespace VisualForge
 
 			ActionLog = new Log(txtLog);
 		}
-		private Log ActionLog;
+		private readonly Log ActionLog;
 
 		private void btnOpenSandbox_Click(object sender, RoutedEventArgs e)
 		{
@@ -36,10 +36,15 @@ namespace VisualForge
 				foreach (var placedObject in h3.SandboxObjects.Where(placedObject => placedObject.TagIndex != -1))
 				{
 					// Try to load Model
+					if (placedObject.TagEntry.Tag.TagPath.Contains("spawning"))
+					{
+
+					}
+
 					string gameAssetPath;
 					try
 					{
-						gameAssetPath = Core.Helpers.VariousFunctions.GetGameAsset(Halo3.GameId, placedObject.TagEntry.Tag.TagPath);
+						gameAssetPath = VariousFunctions.GetGameAsset(Halo3.GameId, placedObject.TagEntry.Tag.TagPath);
 					}
 					catch (FileNotFoundException)
 					{
@@ -47,7 +52,7 @@ namespace VisualForge
 						continue;
 					}
 
-					var model = ModelImporter.Load(gameAssetPath);
+					var model = (Model3D)ModelImporter.Load(gameAssetPath);
 					model.Transform = CreateTransformGroup(placedObject.SpawnCoordinates);
 					container.Add(model);
 				}
@@ -70,16 +75,10 @@ namespace VisualForge
 		{
 			var transformGroup = new Transform3DGroup();
 
-			// X, Y, Z Coordinates
-			transformGroup.Children.Add(new TranslateTransform3D(
-											objectCoordinates.X,
-											objectCoordinates.Y,
-											objectCoordinates.Z
-										));
-
 			// Roll
 			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
-											new Vector3D(1, 0, 0), 90)));
+											new Vector3D(1, 0, 0), objectCoordinates.Roll)));
+
 
 			// Pitch
 			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
@@ -88,6 +87,21 @@ namespace VisualForge
 			// Yaw
 			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
 											new Vector3D(0, 0, 1), objectCoordinates.Yaw)));
+
+			// X, Y, Z Coordinates
+			var matrix = new Matrix3D
+								{
+									OffsetX = objectCoordinates.X,
+									OffsetY = objectCoordinates.Y,
+									OffsetZ = objectCoordinates.Z
+								};
+			matrix.Prepend(new Matrix3D
+								{
+									OffsetX = 0,
+									OffsetY = 0,
+									OffsetZ = 0
+								});
+			transformGroup.Children.Add(new MatrixTransform3D(matrix));
 
 
 			return transformGroup;

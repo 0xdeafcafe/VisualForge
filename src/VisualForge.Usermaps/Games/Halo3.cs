@@ -236,12 +236,15 @@ namespace VisualForge.Usermaps.Games
 					                   {
 						                   X = stream.ReadFloat(),
 										   Y = stream.ReadFloat(),
-										   Z = stream.ReadFloat(),
-										   Yaw = stream.ReadFloat(),
-										   Pitch = stream.ReadFloat(),
-										   Roll = stream.ReadFloat()
+										   Z = stream.ReadFloat()
 					                   };
-				stream.SeekTo(stream.Position + 0x17);
+				stream.SeekTo(stream.Position + 0x08);
+				SpawnCoordinates.Yaw = stream.ReadFloat();
+				SpawnCoordinates.Pitch = stream.ReadFloat();
+				SpawnCoordinates.Roll = stream.ReadFloat();
+
+				// skip 8
+				stream.SeekTo(stream.Position + 0x17 - 0x08);
 				Team = stream.ReadByte();
 				stream.SeekTo(stream.Position + 0x01);
 				RespawnTime = stream.ReadByte();
