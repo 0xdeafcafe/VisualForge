@@ -2,9 +2,11 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Microsoft.Win32;
 using System.Windows;
+using VisualForge.Helix.Plugins;
 using VisualForge.Usermaps.Games;
 using HelixToolkit.Wpf;
 using VisualForge.Core.Helpers;
@@ -53,11 +55,12 @@ namespace VisualForge
 					}
 
 					var model = (Model3D)ModelImporter.Load(gameAssetPath);
-					model.Transform = CreateTransformGroup(placedObject.SpawnCoordinates);
+					model.Transform = CreateTransformGroup(placedObject);
 					container.Add(model);
 				}
 
 				ModelViewport.Children.Clear();
+				ModelViewport.Children.Add(new GridLines());
 				foreach (var model in container)
 				{
 					ModelViewport.Children.Add(new ModelVisual3D
@@ -65,42 +68,53 @@ namespace VisualForge
 							                           Content = model
 						                           });
 				}
+				var light = new LightVisual3D();
+				var ambientLight = new AmbientLight(Colors.Yellow)
+					                   {
+						                   Transform = new MatrixTransform3D(new Matrix3D
+							                                                     {
+								                                                     OffsetX = 0,
+								                                                     OffsetY = 0,
+								                                                     OffsetZ = 100
+							                                                     })
+					                   };
+				light.Content = ambientLight;
+				ModelViewport.Children.Add(light);
 
 				ModelViewport.ShowCameraInfo = true;
 				ModelViewport.ZoomExtents();
+				ModelViewport.IsHeadLightEnabled = true;
 			}
 		}
 
-		public Transform3DGroup CreateTransformGroup(Halo3.ObjectChunk.Coordinates objectCoordinates)
+		public Transform3DGroup CreateTransformGroup(Halo3.ObjectChunk placedObject)
 		{
 			var transformGroup = new Transform3DGroup();
+			float yaw, pitch, roll;
+			Core.Helpers.VectorMath.Convert.ToYawPitchRoll(
+				placedObject.SpawnPosition.Right,
+				placedObject.SpawnPosition.Forward,
+				placedObject.SpawnPosition.Up,
+				out yaw,
+				out pitch,
+				out roll);
 
-			// Roll
-			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
-											new Vector3D(1, 0, 0), objectCoordinates.Roll)));
+			var swag = Microsoft.Xna.Framework.Quaternion.CreateFromYawPitchRoll(roll, pitch, yaw);
 
-
-			// Pitch
-			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
-											new Vector3D(0, 1, 0), objectCoordinates.Pitch)));
-
-			// Yaw
-			transformGroup.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(
-											new Vector3D(0, 0, 1), objectCoordinates.Yaw)));
-
-			// X, Y, Z Coordinates
-			var matrix = new Matrix3D
-								{
-									OffsetX = objectCoordinates.X,
-									OffsetY = objectCoordinates.Y,
-									OffsetZ = objectCoordinates.Z
-								};
-			matrix.Prepend(new Matrix3D
-								{
-									OffsetX = 0,
-									OffsetY = 0,
-									OffsetZ = 0
-								});
+			// Apply 3D Matrix
+			var matrix = new Matrix3D();
+			matrix.Rotate(new Quaternion(swag.X, swag.Y, swag.Z, swag.W));
+			matrix.OffsetX = placedObject.SpawnCoordinates.X;
+			matrix.OffsetY = placedObject.SpawnCoordinates.Y;
+			matrix.OffsetZ = placedObject.SpawnCoordinates.Z;
+			// TODO: FUCK THIS VALUE
+			// TODO: AND FUCK BUNGIE
+			//matrix.Prepend(new Matrix3D
+			//					{
+			//						OffsetX = 0,
+			//						OffsetY = 0,
+			//						OffsetZ = 0
+			//					});
 			transformGroup.Children.Add(new MatrixTransform3D(matrix));
 
 

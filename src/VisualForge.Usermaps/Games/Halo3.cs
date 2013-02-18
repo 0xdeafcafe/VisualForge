@@ -19,13 +19,13 @@
  * This class library was re-coded from PartyBlam (https://github.com/Xerax/PartyBlam), by Alex Reed.
  */
 
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using VisualForge.Core.Helpers;
+using VisualForge.Core.Helpers.VectorMath;
 using VisualForge.IO;
 
 namespace VisualForge.Usermaps.Games
@@ -223,6 +223,7 @@ namespace VisualForge.Usermaps.Games
 			public long Offset { get; set; }
 			public int TagIndex { get; set; }
 			public Coordinates SpawnCoordinates { get; set; }
+			public Position SpawnPosition { get; set; }
 			public byte Team { get; set; }
 			public byte RespawnTime { get; set; }
 			public TagEntry TagEntry { get; set; }
@@ -233,18 +234,31 @@ namespace VisualForge.Usermaps.Games
 				stream.SeekTo(stream.Position + 0x0C);
 				TagIndex = stream.ReadInt32();
 				SpawnCoordinates = new Coordinates
-					                   {
-						                   X = stream.ReadFloat(),
-										   Y = stream.ReadFloat(),
-										   Z = stream.ReadFloat()
-					                   };
-				stream.SeekTo(stream.Position + 0x08);
-				SpawnCoordinates.Yaw = stream.ReadFloat();
-				SpawnCoordinates.Pitch = stream.ReadFloat();
-				SpawnCoordinates.Roll = stream.ReadFloat();
+										{
+											X = stream.ReadFloat(),
+											Y = stream.ReadFloat(),
+											Z = stream.ReadFloat()
+										};
+				SpawnPosition = new Position
+					                {
+						                Right = new Vector3
+							                        {
+								                        X = stream.ReadFloat(),
+								                        Y = stream.ReadFloat(),
+								                        Z = stream.ReadFloat()
+							                        },
+						                Up = new Vector3
+													{
+														X = stream.ReadFloat(),
+														Y = stream.ReadFloat(),
+														Z = stream.ReadFloat()
+													}
+					                };
+				SpawnPosition.Forward = Vector3.Cross(
+					SpawnPosition.Right,
+					SpawnPosition.Up);
 
-				// skip 8
-				stream.SeekTo(stream.Position + 0x17 - 0x08);
+				stream.SeekTo(stream.Position + 0x0B);
 				Team = stream.ReadByte();
 				stream.SeekTo(stream.Position + 0x01);
 				RespawnTime = stream.ReadByte();
@@ -258,9 +272,7 @@ namespace VisualForge.Usermaps.Games
 				stream.WriteFloat(SpawnCoordinates.X);
 				stream.WriteFloat(SpawnCoordinates.Y);
 				stream.WriteFloat(SpawnCoordinates.Z);
-				stream.WriteFloat(SpawnCoordinates.Yaw);
-				stream.WriteFloat(SpawnCoordinates.Pitch);
-				stream.WriteFloat(SpawnCoordinates.Roll);
+				// TODO: Write code for writing rotation
 
 				stream.SeekTo(stream.Position + 0x17);
 				stream.WriteByte(Team);
@@ -276,9 +288,12 @@ namespace VisualForge.Usermaps.Games
 				public float X { get; set; }
 				public float Y { get; set; }
 				public float Z { get; set; }
-				public float Roll { get; set; }
-				public float Pitch { get; set; }
-				public float Yaw { get; set; }
+			}
+			public class Position
+			{
+				public Vector3 Right { get; set; }
+				public Vector3 Up { get; set; }
+				public Vector3 Forward { get; set; }
 			}
 		}
 		public class TagEntry
