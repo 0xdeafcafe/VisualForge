@@ -10,6 +10,7 @@ using VisualForge.Helix.Plugins;
 using VisualForge.Usermaps.Games;
 using HelixToolkit.Wpf;
 using VisualForge.Core.Helpers;
+using VisualForge.IO;
 
 namespace VisualForge
 {
@@ -69,7 +70,7 @@ namespace VisualForge
 						                           });
 				}
 				var light = new LightVisual3D();
-				var ambientLight = new AmbientLight(Colors.Yellow)
+				var ambientLight = new AmbientLight(Colors.WhiteSmoke)
 					                   {
 						                   Transform = new MatrixTransform3D(new Matrix3D
 							                                                     {
@@ -99,6 +100,7 @@ namespace VisualForge
 				out pitch,
 				out roll);
 
+			// For some reason you have to swag the roll and yaw.
 			var swag = Microsoft.Xna.Framework.Quaternion.CreateFromYawPitchRoll(roll, pitch, yaw);
 
 			// Apply 3D Matrix
@@ -140,6 +142,26 @@ namespace VisualForge
 			public void ClearLog()
 			{
 				_textbox.Text = "";
+			}
+		}
+
+
+		// TODO: Find a good place to store this
+		public void OpenUserFile(string filePath)
+		{
+			var stream = new EndianStream(new FileStream(filePath, FileMode.Open), Endian.BigEndian);
+
+			stream.SeekTo(0);
+			switch(stream.ReadAscii(0x04))
+			{
+				case "CON ": case "PIRS" : case "LIVE":
+					break;
+
+				case "_blf":
+					break;
+
+				default: 
+					throw new InvalidOperationException("The selected file is not a supported file type. Only try to open an Xbox 360 Container file that contains a forge varient (sandbox.map) or the pure sandbox.map extracted from a Xbox 360 Container File.");
 			}
 		}
 	}

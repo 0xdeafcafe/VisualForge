@@ -1,0 +1,1197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{83459FEE-697D-4BF6-9B5A-6795F4E04B09}</ProjectGuid>
+    <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
+    <ContentRootDirectory>Content</ContentRootDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>VisualForge.XNAContent</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.AudioImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="4D5307E6\Assets\fx\null_object\null_up\null_up.fbx">
+      <Name>null_up</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\levels\dlc\sandbox\sky\sky.fbx">
+      <Name>sky</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\elite\fp_arms\fp_arms.fbx">
+      <Name>fp_arms</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\elite\mp_elite\fp\fp.fbx">
+      <Name>fp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\elite\mp_elite\fp_body\fp_body.fbx">
+      <Name>fp_body</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\elite\mp_elite\mp_elite.fbx">
+      <Name>mp_elite</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\masterchief\mp_masterchief\fp\fp.fbx">
+      <Name>fp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\masterchief\mp_masterchief\fp_body\fp_body.fbx">
+      <Name>fp_body</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\masterchief\mp_masterchief\mp_masterchief.fbx">
+      <Name>mp_masterchief</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\characters\monitor\monitor.fbx">
+      <Name>monitor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\bubbleshield\bubbleshield.fbx">
+      <Name>bubbleshield</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\bubbleshield_equipment\bubbleshield_equipment.fbx">
+      <Name>bubbleshield_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\gravlift\gravlift.fbx">
+      <Name>gravlift</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\gravlift_equipment\gravlift_equipment.fbx">
+      <Name>gravlift_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\gravlift_permanent\gravlift_permanent.fbx">
+      <Name>gravlift_permanent</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\instantcover\instantcover.fbx">
+      <Name>instantcover</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\instantcover_equipment\instantcover_equipment.fbx">
+      <Name>instantcover_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\jammer\jammer.fbx">
+      <Name>jammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\jammer_equipment\jammer_equipment.fbx">
+      <Name>jammer_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\powerdrain\powerdrain.fbx">
+      <Name>powerdrain</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\powerdrain_equipment\powerdrain_equipment.fbx">
+      <Name>powerdrain_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\regenerator\regenerator.fbx">
+      <Name>regenerator</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\regenerator_equipment\regenerator_equipment.fbx">
+      <Name>regenerator_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\superflare\superflare.fbx">
+      <Name>superflare</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\superflare_equipment\superflare_equipment.fbx">
+      <Name>superflare_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\tripmine\tripmine.fbx">
+      <Name>tripmine</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\equipment\tripmine_equipment\tripmine_equipment.fbx">
+      <Name>tripmine_equipment</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\covenant\military\cov_sword_holder\cov_sword_holder.fbx">
+      <Name>cov_sword_holder</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken01\pallet_broken01.fbx">
+      <Name>pallet_broken01</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken02\pallet_broken02.fbx">
+      <Name>pallet_broken02</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken03\pallet_broken03.fbx">
+      <Name>pallet_broken03</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken04\pallet_broken04.fbx">
+      <Name>pallet_broken04</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken05\pallet_broken05.fbx">
+      <Name>pallet_broken05</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet\pallet_broken06\pallet_broken06.fbx">
+      <Name>pallet_broken06</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\industrial\pallet_large\pallet_large.fbx">
+      <Name>pallet_large</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\military\antennae_mast\antennae_mast.fbx">
+      <Name>antennae_mast</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\military\barricade_large\barricade_large.fbx">
+      <Name>barricade_large</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\military\crate_packing\crate_packing.fbx">
+      <Name>crate_packing</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\military\crate_packing_lid\crate_packing_lid.fbx">
+      <Name>crate_packing_lid</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\gear\human\military\fusion_coil\fusion_coil.fbx">
+      <Name>fusion_coil</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sandbox_light_blue\sandbox_light_blue.fbx">
+      <Name>sandbox_light_blue</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sandbox_light_red\sandbox_light_red.fbx">
+      <Name>sandbox_light_red</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_1x1_lilramp\sand_1x1_lilramp.fbx">
+      <Name>sand_1x1_lilramp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_2x2_lilramp\sand_2x2_lilramp.fbx">
+      <Name>sand_2x2_lilramp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_archtop\sand_archtop.fbx">
+      <Name>sand_archtop</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_block\sand_block.fbx">
+      <Name>sand_block</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_block_flat\sand_block_flat.fbx">
+      <Name>sand_block_flat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_block_large\sand_block_large.fbx">
+      <Name>sand_block_large</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_block_ramp\sand_block_ramp.fbx">
+      <Name>sand_block_ramp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_block_wittle\sand_block_wittle.fbx">
+      <Name>sand_block_wittle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_bridge\sand_bridge.fbx">
+      <Name>sand_bridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_column_short\sand_column_short.fbx">
+      <Name>sand_column_short</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_column_short_red\sand_column_short_red.fbx">
+      <Name>sand_column_short_red</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_column_tt\sand_column_tt.fbx">
+      <Name>sand_column_tt</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_cylinder\sand_cylinder.fbx">
+      <Name>sand_cylinder</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_cylinder_end\sand_cylinder_end.fbx">
+      <Name>sand_cylinder_end</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_cylinder_lturn\sand_cylinder_lturn.fbx">
+      <Name>sand_cylinder_lturn</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_cylinder_threeway\sand_cylinder_threeway.fbx">
+      <Name>sand_cylinder_threeway</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_gatehouse\sand_gatehouse.fbx">
+      <Name>sand_gatehouse</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_cubex2\sand_large_cubex2.fbx">
+      <Name>sand_large_cubex2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_cube\sand_large_cube.fbx">
+      <Name>sand_large_cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_cube_pillar\sand_large_cube_pillar.fbx">
+      <Name>sand_large_cube_pillar</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_halfcubex2\sand_large_halfcubex2.fbx">
+      <Name>sand_large_halfcubex2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_halfcube\sand_large_halfcube.fbx">
+      <Name>sand_large_halfcube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_large_wood_bridge\sand_large_wood_bridge.fbx">
+      <Name>sand_large_wood_bridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_long_cuberamp\sand_long_cuberamp.fbx">
+      <Name>sand_long_cuberamp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_mast_house\sand_mast_house.fbx">
+      <Name>sand_mast_house</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_pyr_bridge\sand_pyr_bridge.fbx">
+      <Name>sand_pyr_bridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_pyr_corner\sand_pyr_corner.fbx">
+      <Name>sand_pyr_corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_pyr_corner_extender\sand_pyr_corner_extender.fbx">
+      <Name>sand_pyr_corner_extender</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_ramp\sand_ramp.fbx">
+      <Name>sand_ramp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_scaffold\sand_scaffold.fbx">
+      <Name>sand_scaffold</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_slant_cube\sand_slant_cube.fbx">
+      <Name>sand_slant_cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_slant_cube_corner\sand_slant_cube_corner.fbx">
+      <Name>sand_slant_cube_corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_small_cuberamp\sand_small_cuberamp.fbx">
+      <Name>sand_small_cuberamp</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_small_wood_bridge\sand_small_wood_bridge.fbx">
+      <Name>sand_small_wood_bridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wallx2\sand_wallx2.fbx">
+      <Name>sand_wallx2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall\sand_wall.fbx">
+      <Name>sand_wall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall_halfdoor\sand_wall_halfdoor.fbx">
+      <Name>sand_wall_halfdoor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall_lowdoor\sand_wall_lowdoor.fbx">
+      <Name>sand_wall_lowdoor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall_lsection\sand_wall_lsection.fbx">
+      <Name>sand_wall_lsection</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall_slit\sand_wall_slit.fbx">
+      <Name>sand_wall_slit</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\sand_wall_tsection\sand_wall_tsection.fbx">
+      <Name>sand_wall_tsection</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\stone_column_damaged\stone_column_damaged.fbx">
+      <Name>stone_column_damaged</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\stone_column_short\stone_column_short.fbx">
+      <Name>stone_column_short</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\sandbox\stone_column_tall\stone_column_tall.fbx">
+      <Name>stone_column_tall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\damage_sphere\damage_sphere.fbx">
+      <Name>damage_sphere</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\golf_ball\golf_ball.fbx">
+      <Name>golf_ball</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\golf_club\fp_golf_club\fp_golf_club.fbx">
+      <Name>fp_golf_club</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\golf_club\golf_club.fbx">
+      <Name>golf_club</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\golf_cup\golf_cup.fbx">
+      <Name>golf_cup</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\large_shield_door\large_shield_door.fbx">
+      <Name>large_shield_door</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\man_cannon_forge\man_cannon_forge.fbx">
+      <Name>man_cannon_forge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\dlc\shared\screen_fx_orb\screen_fx_orb.fbx">
+      <Name>screen_fx_orb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\multi\shrine\sand_jump_pad\sand_jump_pad.fbx">
+      <Name>sand_jump_pad</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\levels\multi\shrine\shrine_defender\shrine_defender.fbx">
+      <Name>shrine_defender</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\box_l\box_l.fbx">
+      <Name>box_l</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\box_m\box_m.fbx">
+      <Name>box_m</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\box_xl\box_xl.fbx">
+      <Name>box_xl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\box_xxl\box_xxl.fbx">
+      <Name>box_xxl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\box_xxxl\box_xxxl.fbx">
+      <Name>box_xxxl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\models\mp_area_emitter\mp_area_emitter.fbx">
+      <Name>mp_area_emitter</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\models\mp_circle\mp_circle.fbx">
+      <Name>mp_circle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\models\mp_flag_base\mp_flag_base.fbx">
+      <Name>mp_flag_base</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\models\mp_spawn_point\mp_spawn_point.fbx">
+      <Name>mp_spawn_point</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\powerups\powerup_blue\powerup_blue.fbx">
+      <Name>powerup_blue</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\powerups\powerup_red\powerup_red.fbx">
+      <Name>powerup_red</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\powerups\powerup_yellow\powerup_yellow.fbx">
+      <Name>powerup_yellow</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\teleporter_reciever\teleporter_reciever.fbx">
+      <Name>teleporter_reciever</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\teleporter_sender\teleporter_sender.fbx">
+      <Name>teleporter_sender</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\wall_l\wall_l.fbx">
+      <Name>wall_l</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\wall_m\wall_m.fbx">
+      <Name>wall_m</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\wall_xl\wall_xl.fbx">
+      <Name>wall_xl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\wall_xxl\wall_xxl.fbx">
+      <Name>wall_xxl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\multi\wall_xxxl\wall_xxxl.fbx">
+      <Name>wall_xxxl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\battle_rifle_ammo\battle_rifle_ammo.fbx">
+      <Name>battle_rifle_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\needler_ammo\needler_ammo.fbx">
+      <Name>needler_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\pistol_ammo\pistol_ammo.fbx">
+      <Name>pistol_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\rocket_launcher_ammo\rocket_launcher_ammo.fbx">
+      <Name>rocket_launcher_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\shotgun_ammo\shotgun_ammo.fbx">
+      <Name>shotgun_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\smg_ammo\smg_ammo.fbx">
+      <Name>smg_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\powerups\sniper_rifle_ammo\sniper_rifle_ammo.fbx">
+      <Name>sniper_rifle_ammo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\ui\editor_gizmo\editor_gizmo.fbx">
+      <Name>editor_gizmo</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\banshee\banshee.fbx">
+      <Name>banshee</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\brute_chopper\brute_chopper.fbx">
+      <Name>brute_chopper</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\ghost\ghost.fbx">
+      <Name>ghost</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\hornet\hornet.fbx">
+      <Name>hornet</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\hornet\hornet_snow.fbx">
+      <Name>hornet_snow</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\mauler\anti_infantry\anti_infantry.fbx">
+      <Name>anti_infantry</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\mauler\mauler.fbx">
+      <Name>mauler</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\mongoose\mongoose.fbx">
+      <Name>mongoose</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\scorpion\scorpion.fbx">
+      <Name>scorpion</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\scorpion\turrets\anti_infantry\anti_infantry.fbx">
+      <Name>anti_infantry</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\scorpion\turrets\cannon\cannon.fbx">
+      <Name>cannon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\warthog\turrets\chaingun\chaingun.fbx">
+      <Name>chaingun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\warthog\turrets\gauss\gauss.fbx">
+      <Name>gauss</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\warthog\turrets\troop\troop.fbx">
+      <Name>troop</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\warthog\warthog.fbx">
+      <Name>warthog</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\wraith\turrets\anti_air\anti_air.fbx">
+      <Name>anti_air</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\wraith\turrets\anti_infantry\anti_infantry.fbx">
+      <Name>anti_infantry</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\wraith\turrets\mortar\mortar.fbx">
+      <Name>mortar</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\vehicles\wraith\wraith.fbx">
+      <Name>wraith</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\grenade\claymore_grenade\claymore_grenade.fbx">
+      <Name>claymore_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\grenade\firebomb_grenade\firebomb_grenade.fbx">
+      <Name>firebomb_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\grenade\frag_grenade\frag_grenade.fbx">
+      <Name>frag_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\grenade\plasma_grenade\plasma_grenade.fbx">
+      <Name>plasma_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_assault_bomb\lod_assault_bomb.fbx">
+      <Name>lod_assault_bomb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_assault_rifle\lod_assault_rifle.fbx">
+      <Name>lod_assault_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_ball\lod_ball.fbx">
+      <Name>lod_ball</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_battle_rifle\lod_battle_rifle.fbx">
+      <Name>lod_battle_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_beam_rifle\lod_beam_rifle.fbx">
+      <Name>lod_beam_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_brute_grenade\lod_brute_grenade.fbx">
+      <Name>lod_brute_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_brute_shot\lod_brute_shot.fbx">
+      <Name>lod_brute_shot</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_carbine\lod_carbine.fbx">
+      <Name>lod_carbine</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_excavator\lod_excavator.fbx">
+      <Name>lod_excavator</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_firebomb_grenade\lod_firebomb_grenade.fbx">
+      <Name>lod_firebomb_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_flak_cannon\lod_flak_cannon.fbx">
+      <Name>lod_flak_cannon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_flamethrower\lod_flamethrower.fbx">
+      <Name>lod_flamethrower</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_frag_grenade\lod_frag_grenade.fbx">
+      <Name>lod_frag_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_gravity_hammer\lod_gravity_hammer.fbx">
+      <Name>lod_gravity_hammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_machine_gun_turret\lod_machine_gun_turret.fbx">
+      <Name>lod_machine_gun_turret</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_magnum\lod_magnum.fbx">
+      <Name>lod_magnum</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_missile_pod\lod_missile_pod.fbx">
+      <Name>lod_missile_pod</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_needler\lod_needler.fbx">
+      <Name>lod_needler</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_plasma_grenade\lod_plasma_grenade.fbx">
+      <Name>lod_plasma_grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_plasma_pistol\lod_plasma_pistol.fbx">
+      <Name>lod_plasma_pistol</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_plasma_rifle\lod_plasma_rifle.fbx">
+      <Name>lod_plasma_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_plasma_turret\lod_plasma_turret.fbx">
+      <Name>lod_plasma_turret</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_rocket_launcher\lod_rocket_launcher.fbx">
+      <Name>lod_rocket_launcher</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_sentinel_gun\lod_sentinel_gun.fbx">
+      <Name>lod_sentinel_gun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_shotgun\lod_shotgun.fbx">
+      <Name>lod_shotgun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_smg\lod_smg.fbx">
+      <Name>lod_smg</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_sniper_rifle\lod_sniper_rifle.fbx">
+      <Name>lod_sniper_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_spartan_laser\lod_spartan_laser.fbx">
+      <Name>lod_spartan_laser</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\lod\lod_spike_rifle\lod_spike_rifle.fbx">
+      <Name>lod_spike_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\melee\energy_blade\fp_energy_blade\fp_energy_blade.fbx">
+      <Name>fp_energy_blade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\melee\gravity_hammer\fp_gravity_hammer\fp_gravity_hammer.fbx">
+      <Name>fp_gravity_hammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\melee\gravity_hammer\gravity_hammer.fbx">
+      <Name>gravity_hammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\assault_bomb\assault_bomb.fbx">
+      <Name>assault_bomb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\assault_bomb\fp_assault_bomb\fp_assault_bomb.fbx">
+      <Name>fp_assault_bomb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\ball\ball.fbx">
+      <Name>ball</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\ball\fp_ball\fp_ball.fbx">
+      <Name>fp_ball</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\flag\flag.fbx">
+      <Name>flag</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\multiplayer\flag\fp_flag\fp_flag.fbx">
+      <Name>fp_flag</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\excavator\excavator.fbx">
+      <Name>excavator</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\excavator\fp_excavator\fp_excavator.fbx">
+      <Name>fp_excavator</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\magnum\fp_magnum\fp_magnum.fbx">
+      <Name>fp_magnum</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\magnum\magnum.fbx">
+      <Name>magnum</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\needler\fp_needler\fp_needler.fbx">
+      <Name>fp_needler</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\needler\needler.fbx">
+      <Name>needler</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\needler\projectiles\needler_shard\needler_shard.fbx">
+      <Name>needler_shard</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\plasma_pistol\fp_plasma_pistol\fp_plasma_pistol.fbx">
+      <Name>fp_plasma_pistol</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\pistol\plasma_pistol\plasma_pistol.fbx">
+      <Name>plasma_pistol</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\assault_rifle\assault_rifle.fbx">
+      <Name>assault_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\assault_rifle\fp_assault_rifle\fp_assault_rifle.fbx">
+      <Name>fp_assault_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\battle_rifle\battle_rifle.fbx">
+      <Name>battle_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\battle_rifle\fp_battle_rifle\fp_battle_rifle.fbx">
+      <Name>fp_battle_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\beam_rifle\beam_rifle.fbx">
+      <Name>beam_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\beam_rifle\fp_beam_rifle\fp_beam_rifle.fbx">
+      <Name>fp_beam_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\covenant_carbine\covenant_carbine.fbx">
+      <Name>covenant_carbine</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\covenant_carbine\fp_covenant_carbine\fp_covenant_carbine.fbx">
+      <Name>fp_covenant_carbine</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\plasma_rifle\fp_plasma_rifle\fp_plasma_rifle.fbx">
+      <Name>fp_plasma_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\plasma_rifle\plasma_rifle.fbx">
+      <Name>plasma_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\shotgun\fp_shotgun\fp_shotgun.fbx">
+      <Name>fp_shotgun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\shotgun\shotgun.fbx">
+      <Name>shotgun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\smg\fp_smg\fp_smg.fbx">
+      <Name>fp_smg</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\smg\smg.fbx">
+      <Name>smg</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\sniper_rifle\fp_sniper_rifle\fp_sniper_rifle.fbx">
+      <Name>fp_sniper_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\sniper_rifle\sniper_rifle.fbx">
+      <Name>sniper_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\spike_rifle\fp_spike_rifle\fp_spike_rifle.fbx">
+      <Name>fp_spike_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\rifle\spike_rifle\spike_rifle.fbx">
+      <Name>spike_rifle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\flak_cannon\flak_cannon.fbx">
+      <Name>flak_cannon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\flak_cannon\fp_flak_cannon\fp_flak_cannon.fbx">
+      <Name>fp_flak_cannon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\flak_cannon\projectiles\flak_bolt\flak_bolt.fbx">
+      <Name>flak_bolt</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\rocket_launcher\fp_rocket_launcher\fp_rocket_launcher.fbx">
+      <Name>fp_rocket_launcher</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\rocket_launcher\projectiles\rocket\rocket.fbx">
+      <Name>rocket</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\rocket_launcher\rocket_launcher.fbx">
+      <Name>rocket_launcher</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\spartan_laser\fp_spartan_laser\fp_spartan_laser.fbx">
+      <Name>fp_spartan_laser</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_high\spartan_laser\spartan_laser.fbx">
+      <Name>spartan_laser</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_low\brute_shot\brute_shot.fbx">
+      <Name>brute_shot</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_low\brute_shot\fp_brute_shot\fp_brute_shot.fbx">
+      <Name>fp_brute_shot</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_low\brute_shot\projectiles\grenade\grenade.fbx">
+      <Name>grenade</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_low\sentinel_gun\fp_sentinel_gun\fp_sentinel_gun.fbx">
+      <Name>fp_sentinel_gun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\support_low\sentinel_gun\sentinel_gun.fbx">
+      <Name>sentinel_gun</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\flamethrower\flamethrower_weapon\flamethrower_weapon.fbx">
+      <Name>flamethrower_weapon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\machinegun_turret\machinegun_turret_vehicle\machinegun_turret_vehicle.fbx">
+      <Name>machinegun_turret_vehicle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\machinegun_turret\machinegun_turret_weapon\machinegun_turret_weapon.fbx">
+      <Name>machinegun_turret_weapon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\missile_pod\missile_pod_weapon\missile_pod_weapon.fbx">
+      <Name>missile_pod_weapon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\missile_pod\projectiles\missile\missile.fbx">
+      <Name>missile</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\plasma_cannon\plasma_cannon_vehicle\plasma_cannon_vehicle.fbx">
+      <Name>plasma_cannon_vehicle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="4D5307E6\Assets\objects\weapons\turret\plasma_cannon\plasma_cannon_weapon\plasma_cannon_weapon.fbx">
+      <Name>plasma_cannon_weapon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
+  <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

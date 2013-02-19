@@ -39,7 +39,7 @@ namespace VisualForge.Usermaps.Games
 		// Public Facing Variabes
 		public EndianStream SandboxStream;
 		public const string GameId = "4D5307E6";
-		public Header SandboxeHeader;
+		public Header SandboxHeader;
 		public MapMetaData SandboxMapMetaData;
 		public IList<ObjectChunk> SandboxObjects;
 		public IList<TagEntry> SandboxTagEntries; 
@@ -73,57 +73,57 @@ namespace VisualForge.Usermaps.Games
 		// Loading
 		private void LoadHeader()
 		{
-			SandboxeHeader = new Header();
+			SandboxHeader = new Header();
 
 			SandboxStream.SeekTo(0x42);
-			SandboxeHeader.CreationDate =					SandboxStream.ReadInt32();
+			SandboxHeader.CreationDate =					SandboxStream.ReadInt32();
 			SandboxStream.SeekTo(0x48);
-			SandboxeHeader.CreationVarientName =			SandboxStream.ReadUTF16(0x1F);
+			SandboxHeader.CreationVarientName =			SandboxStream.ReadUTF16(0x1F);
 			SandboxStream.SeekTo(0x68);
-			SandboxeHeader.CreationVarientDescription =	SandboxStream.ReadAscii(0x80);
+			SandboxHeader.CreationVarientDescription =	SandboxStream.ReadAscii(0x80);
 			SandboxStream.SeekTo(0xE8);
-			SandboxeHeader.CreationVarientAuthor =		SandboxStream.ReadAscii(0x13);
+			SandboxHeader.CreationVarientAuthor =		SandboxStream.ReadAscii(0x13);
 
 			SandboxStream.SeekTo(0x114);
-			SandboxeHeader.ModificationDate =				SandboxStream.ReadInt32();
+			SandboxHeader.ModificationDate =				SandboxStream.ReadInt32();
 			SandboxStream.SeekTo(0x150);
-			SandboxeHeader.VarientName =					SandboxStream.ReadUTF16(0x1F);
+			SandboxHeader.VarientName =					SandboxStream.ReadUTF16(0x1F);
 			SandboxStream.SeekTo(0x170);
-			SandboxeHeader.VarientDescription =			SandboxStream.ReadAscii(0x80);
+			SandboxHeader.VarientDescription =			SandboxStream.ReadAscii(0x80);
 			SandboxStream.SeekTo(0x1F0);
-			SandboxeHeader.VarientAuthor =				SandboxStream.ReadAscii(0x13);
+			SandboxHeader.VarientAuthor =				SandboxStream.ReadAscii(0x13);
 
 			SandboxStream.SeekTo(0x228);
-			SandboxeHeader.MapID =						SandboxStream.ReadInt32();
+			SandboxHeader.MapID =						SandboxStream.ReadInt32();
 
 			SandboxStream.SeekTo(0x246);
-			SandboxeHeader.SpawnedObjectCount =			SandboxStream.ReadInt16();
+			SandboxHeader.SpawnedObjectCount =			SandboxStream.ReadInt16();
 
 			SandboxStream.SeekTo(0x24C);
-			SandboxeHeader.WorldBoundsX =					new Header.WorldBound
+			SandboxHeader.WorldBoundsX =					new Header.WorldBound
 															{
 																Min = SandboxStream.ReadFloat(),
 																Max = SandboxStream.ReadFloat()
 															};
-			SandboxeHeader.WorldBoundsY =					new Header.WorldBound
+			SandboxHeader.WorldBoundsY =					new Header.WorldBound
 															{
 																Min = SandboxStream.ReadFloat(),
 																Max = SandboxStream.ReadFloat()
 															};
-			SandboxeHeader.WorldBoundsZ =					new Header.WorldBound
+			SandboxHeader.WorldBoundsZ =					new Header.WorldBound
 															{
 																Min = SandboxStream.ReadFloat(),
 																Max = SandboxStream.ReadFloat()
 															};
 
 			SandboxStream.SeekTo(0x268);
-			SandboxeHeader.MaximiumBudget =				SandboxStream.ReadFloat();
-			SandboxeHeader.CurrentBudget =				SandboxStream.ReadFloat();
+			SandboxHeader.MaximiumBudget =				SandboxStream.ReadFloat();
+			SandboxHeader.CurrentBudget =				SandboxStream.ReadFloat();
 		}
 		private void LoadMapMetaData()
 		{
 			var taglist = 
-				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(GameId, SandboxeHeader.MapID));
+				VariousFunctions.GZip.Decompress(VariousFunctions.GetTaglistFile(GameId, SandboxHeader.MapID));
 
 			SandboxMapMetaData = JsonConvert.DeserializeObject<MapMetaData>(VariousFunctions.ByteArrayToString(taglist, VariousFunctions.EncodingType.ASCII));
 		}
@@ -260,8 +260,10 @@ namespace VisualForge.Usermaps.Games
 
 				stream.SeekTo(stream.Position + 0x0B);
 				Team = stream.ReadByte();
+
 				stream.SeekTo(stream.Position + 0x01);
 				RespawnTime = stream.ReadByte();
+
 				stream.SeekTo(stream.Position + 0x12);
 			}
 			public void Update(EndianStream stream)
@@ -272,9 +274,14 @@ namespace VisualForge.Usermaps.Games
 				stream.WriteFloat(SpawnCoordinates.X);
 				stream.WriteFloat(SpawnCoordinates.Y);
 				stream.WriteFloat(SpawnCoordinates.Z);
-				// TODO: Write code for writing rotation
+				stream.WriteFloat(SpawnPosition.Right.X);
+				stream.WriteFloat(SpawnPosition.Right.Y);
+				stream.WriteFloat(SpawnPosition.Right.Z);
+				stream.WriteFloat(SpawnPosition.Up.X);
+				stream.WriteFloat(SpawnPosition.Up.Y);
+				stream.WriteFloat(SpawnPosition.Up.Z);
 
-				stream.SeekTo(stream.Position + 0x17);
+				stream.SeekTo(stream.Position + 0x0B);
 				stream.WriteByte(Team);
 
 				stream.SeekTo(stream.Position + 0x01);
