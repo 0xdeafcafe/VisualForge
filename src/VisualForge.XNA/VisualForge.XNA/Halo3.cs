@@ -22,18 +22,25 @@ namespace VisualForge.XNA
 			public Usermaps.Games.Halo3.MapMetaData.Tag Tag { get; set; }
 			public Model Model { get; set; }
 		}
+		public float AspectRatio;
 
 		private readonly string _filePath;
 		private Usermaps.Games.Halo3 _sandbox;
 
 		// Camera
-		private FirstPersonCamera camera;
+		private VisualCamera camera;
 
 
 		public Halo3(string filePath)
 		{
 			_filePath = filePath;
-			graphics = new GraphicsDeviceManager(this);
+			graphics = new GraphicsDeviceManager(this)
+				           {
+					           PreferredBackBufferWidth = 1280, 
+							   PreferredBackBufferHeight = 720
+				           };
+			IsMouseVisible = true;
+			graphics.ApplyChanges();
 			Content.RootDirectory = "Content";
 		}
 
@@ -47,8 +54,8 @@ namespace VisualForge.XNA
 		{
 			// TODO: Add your initialization logic here
 			_sandbox = new Usermaps.Games.Halo3(_filePath);
-			camera = new FirstPersonCamera(this, new Vector3(0, 0, 20), Vector3.Forward, Vector3.Up);
-			Components.Add(camera);
+			camera = new VisualCamera(this);
+			//Components.Add(camera);
 
 			base.Initialize();
 		}
@@ -69,8 +76,6 @@ namespace VisualForge.XNA
 				                            Usermaps.Games.Halo3.GameId, tag.TagPath);
 				var pipelineTagPath = string.Format("{0}\\Assets\\{1}", Usermaps.Games.Halo3.GameId, tag.TagPath);
 
-				// if (Content.)
-
 				if (File.Exists(tagPath))
 					gameAssets.Add(new GameModel
 						               {
@@ -78,7 +83,7 @@ namespace VisualForge.XNA
 							               Tag = tag
 						               });
 			}
-			aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+			AspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 		}
 
 		/// <summary>
@@ -104,18 +109,11 @@ namespace VisualForge.XNA
 				Exit();
 
 			// TODO: Add your update logic here
-			var gamepadState = GamePad.GetState(PlayerIndex.One);
-			var translation = new Vector3(gamepadState.ThumbSticks.Left.X, 0, -gamepadState.ThumbSticks.Left.Y);
-			camera.Update(translation, -gamepadState.ThumbSticks.Right.X, gamepadState.ThumbSticks.Right.Y);
- 
+			camera.UpdateCamera();
 
 
 			base.Update(gameTime);
 		}
-
-		// TODO: Remove Placeholder stuff
-		//Vector3 cameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
-		float aspectRatio;
 
 		/// <summary>
 		/// This is called when the game should draw itself.
@@ -156,13 +154,8 @@ namespace VisualForge.XNA
 								placedObject.SpawnCoordinates.Y,
 								placedObject.SpawnCoordinates.Z));
 
-						effect.View = camera.viewMatrix;
-						effect.Projection = camera.projectionMatrix;
-
-						//effect.Projection = Matrix.CreatePerspectiveFieldOfView(
-						//	MathHelper.ToRadians(45.0f), aspectRatio,
-						//	1.0f, 10000.0f);
-
+						effect.View = camera.ViewMatrix;
+						effect.Projection = camera.ProjectionMatrix;
 					}
 
 					mesh.Draw();
