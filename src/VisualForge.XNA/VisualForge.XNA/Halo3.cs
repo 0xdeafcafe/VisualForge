@@ -22,13 +22,14 @@ namespace VisualForge.XNA
 			public Usermaps.Games.Halo3.MapMetaData.Tag Tag { get; set; }
 			public Model Model { get; set; }
 		}
-		public float AspectRatio;
+		//Vector3 cameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
+		private float _aspectRatio;
 
 		private readonly string _filePath;
 		private Usermaps.Games.Halo3 _sandbox;
 
 		// Camera
-		private VisualCamera camera;
+		private FirstPersonCamera camera;
 
 
 		public Halo3(string filePath)
@@ -54,8 +55,8 @@ namespace VisualForge.XNA
 		{
 			// TODO: Add your initialization logic here
 			_sandbox = new Usermaps.Games.Halo3(_filePath);
-			camera = new VisualCamera(this);
-			//Components.Add(camera);
+			camera = new FirstPersonCamera(this);
+			Components.Add(camera);
 
 			base.Initialize();
 		}
@@ -76,6 +77,8 @@ namespace VisualForge.XNA
 				                            Usermaps.Games.Halo3.GameId, tag.TagPath);
 				var pipelineTagPath = string.Format("{0}\\Assets\\{1}", Usermaps.Games.Halo3.GameId, tag.TagPath);
 
+				// if (Content.)
+
 				if (File.Exists(tagPath))
 					gameAssets.Add(new GameModel
 						               {
@@ -83,7 +86,7 @@ namespace VisualForge.XNA
 							               Tag = tag
 						               });
 			}
-			AspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+			_aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 		}
 
 		/// <summary>
@@ -109,11 +112,11 @@ namespace VisualForge.XNA
 				Exit();
 
 			// TODO: Add your update logic here
-			camera.UpdateCamera();
-
 
 			base.Update(gameTime);
 		}
+
+		// TODO: Remove Placeholder stuff
 
 		/// <summary>
 		/// This is called when the game should draw itself.
@@ -147,15 +150,15 @@ namespace VisualForge.XNA
 							out pitch,
 							out roll);
 
+						effect.View = camera.View;
+						effect.Projection = camera.Projection;
+
 						effect.EnableDefaultLighting();
 						effect.World = Matrix.CreateFromYawPitchRoll(roll, pitch, yaw) * Matrix.CreateTranslation(
 							new Vector3(
 								placedObject.SpawnCoordinates.X,
 								placedObject.SpawnCoordinates.Y,
 								placedObject.SpawnCoordinates.Z));
-
-						effect.View = camera.ViewMatrix;
-						effect.Projection = camera.ProjectionMatrix;
 					}
 
 					mesh.Draw();
