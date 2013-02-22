@@ -77,8 +77,6 @@ namespace VisualForge.XNA
 				                            Usermaps.Games.Halo3.GameId, tag.TagPath);
 				var pipelineTagPath = string.Format("{0}\\Assets\\{1}", Usermaps.Games.Halo3.GameId, tag.TagPath);
 
-				// if (Content.)
-
 				if (File.Exists(tagPath))
 					gameAssets.Add(new GameModel
 						               {
@@ -115,8 +113,6 @@ namespace VisualForge.XNA
 
 			base.Update(gameTime);
 		}
-
-		// TODO: Remove Placeholder stuff
 
 		/// <summary>
 		/// This is called when the game should draw itself.

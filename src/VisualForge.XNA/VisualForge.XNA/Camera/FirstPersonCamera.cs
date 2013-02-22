@@ -42,16 +42,6 @@ namespace VisualForge.XNA.Camera
 			get { return angles; }
 		}
 
-		/// <summary>
-		/// Screen width / 2
-		/// </summary>
-		private int widthOver2;
-
-		/// <summary>
-		/// Screen height / 2
-		/// </summary>
-		private int heightOver2;
-
 		private float fieldOfView = MathHelper.ToRadians(70.0f);
 		private float aspectRatio;
 		private float nearPlaneDist = 0.1f;
@@ -87,10 +77,8 @@ namespace VisualForge.XNA.Camera
 		public FirstPersonCamera(Game game)
 			: base(game)
 		{
-			widthOver2 = game.Window.ClientBounds.Width / 2;
-			heightOver2 = game.Window.ClientBounds.Height / 2;
 			aspectRatio = game.Window.ClientBounds.Width / (float)game.Window.ClientBounds.Height;
-			UpdateProjection();
+			SetupCamera();
 		}
 
 		public override void Update(GameTime gameTime)
@@ -133,17 +121,12 @@ namespace VisualForge.XNA.Camera
 			//and our current mouse position.
 			if (gamePad.ThumbSticks.Right.X != 0)
 			{
-				angles.Y -= -gamePad.ThumbSticks.Right.X / 15;
+				angles.Y -= gamePad.ThumbSticks.Right.X / 15;
 			}
 			if (gamePad.ThumbSticks.Right.Y != 0)
 			{
 				angles.X -= gamePad.ThumbSticks.Right.Y / 15;
 			}
-
-			//if (currentMouseState.X != widthOver2)
-			//	angles.Y -= movementAmt / 800.0f * (currentMouseState.X - widthOver2);
-			//if (currentMouseState.Y != heightOver2)
-			//	angles.X -= movementAmt / 800.0f * (currentMouseState.Y - heightOver2);
 
 			// Limit the angles of rotation to (1.4, 2PI)
 			//if (angles.X > 1.4f) angles.X = 1.4f;
@@ -157,10 +140,28 @@ namespace VisualForge.XNA.Camera
 		/// </summary>
 		private void UpdateView()
 		{
-			var camRotation = Matrix.CreateRotationX(angles.X) * Matrix.CreateRotationY(angles.Y);
+			var camRotation = Matrix.CreateRotationX(angles.X) * Matrix.CreateRotationZ(angles.Y);
 			var targetPos = position + Vector3.Transform(Vector3.Backward, camRotation);
 			var up = Vector3.Transform(Vector3.Up, camRotation);
 			view = Matrix.CreateLookAt(position, targetPos, up);
+		}
+
+		/// <summary>
+		/// Set the camera's initial rotation and positioning.
+		/// </summary>
+		private void SetupCamera()
+		{
+			// Update Angles
+			angles.X = 1.9f;
+			angles.Y = 0.0f;
+
+			var camRotation = Matrix.CreateRotationX(angles.X) * Matrix.CreateRotationZ(angles.Y);
+			var targetPos = position + Vector3.Transform(Vector3.Backward, camRotation);
+			var up = Vector3.Transform(Vector3.Up, camRotation);
+			view = Matrix.CreateLookAt(position, targetPos, up);
+
+			UpdateProjection();
+			UpdateView();
 		}
 	}
 }
