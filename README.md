@@ -1,9 +1,9 @@
 VisualForge
 ===========
 
-Open a usermap (sandbox only atm), and it'll load the assets that you have placed in forge and load them into a 3D XNA game enviroment.
+Open a usermap (sandbox only at-the-moment), and it will load the asset placement information from the forge variant, and render an exact replica in the game view. It currently loads the assets from a folder in the same directory as the exe.
 
-If I ever get round to working on this again, I'll get it to load from a cache file (smaller exe size), and then obviously support more than just sandbox.
+If I ever work on this again, I'll update it to load assets from the actual Blam cache file (.maps). For legal reasons. And also application size issues. (What is this, vantiy?)
 
 ### Pictures:
 ![1](http://i.imgur.com/5pwF7vlh.png)
